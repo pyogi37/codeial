@@ -1,9 +1,19 @@
 const User = require("../models/users");
 
 module.exports.profile = function (req, res) {
-  return res.render("user_profile", {
-    title: "Profile",
-  });
+  if (req.cookies.user_id) {
+    User.findById(req.cookies.user_id, function (err, user) {
+      if (user) {
+        return res.render("user_profile", {
+          title: "Profile",
+          user: user,
+        });
+      }
+      return res.redirect("/users/sign-in");
+    });
+  } else {
+    return res.redirect("/users/sign-in");
+  }
 };
 
 // render sign in page
@@ -19,12 +29,6 @@ module.exports.signUp = function (req, res) {
     title: "Codeal | Sign Up",
   });
 };
-
-// sign in and creat a session for user
-module.exports.createSession = function (req, res) {
-  // TODO LATER
-};
-
 
 // get sign up data
 module.exports.create = function (req, res) {
@@ -48,4 +52,33 @@ module.exports.create = function (req, res) {
       return res.redirect("back");
     }
   });
+};
+
+// sign in and creat a session for user
+module.exports.createSession = function (req, res) {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
+      console.log("error in finding user in signing in");
+      return;
+    }
+    // handle user found
+    if (user) {
+      // handle pwd which doesnt match
+      if (user.password != req.body.password) {
+        return res.redirect("back");
+      }
+
+      // handle session creation
+      res.cookie("user_id", user.id);
+      return res.redirect("/users/profile");
+    } else {
+      // handle user not found
+      return res.redirect("back");
+    }
+  });
+};
+
+module.exports.signOut = function (req, res) {
+  res.cookie("user_id", 0);
+  return res.redirect("/users/sign-in");
 };
