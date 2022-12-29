@@ -2,4 +2,35 @@ body {
   margin: 0;
   /* text-align: center; */
   background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-list {
+  margin-right: 3px;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.horizontal-list li {
+  margin: 3px;
+  align-self: center;
+}
+
+.horizontal-list li a {
+  color: aliceblue;
+}
+
+.border {
+  height: 100%;
+  width: 5px;
+  background-color: rgb(35, 35, 134);
+  margin-left: 5px;
+}
+
+#body {
+  height: 90vh;
+  width: 95vh;
+  margin-right: 5vh;
 }
