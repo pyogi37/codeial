@@ -1,8 +1,10 @@
 <footer id="page-footer">
   <ul id="footer-list" class="horizontal-list">
+    <% if(locals.user){ %>
     <li>
-      <a href="/users/profile"> profile </a>
+      <a href="/users/profile/<%= locals.user._id %>"> profile </a>
     </li>
+    <% } %>
     <li>
       <a href="/"> home </a>
     </li>

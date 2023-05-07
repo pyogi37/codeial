@@ -10,6 +10,10 @@
   display: flex;
 }
 
+#app-title-container a {
+  text-decoration: none;
+}
+
 #app-title {
   font-family: sans-serif;
   color: aliceblue;
@@ -17,3 +21,4 @@
   margin-left: 3px;
   background-color: blueviolet;
 }
+

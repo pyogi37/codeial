@@ -1,12 +1,13 @@
 <header id="page-header">
   <div id="app-title-container">
-    <h1 id="app-title">codeial</h1>
-    <!-- <div class="border"></div> -->
+    <a href="/">
+      <h1 id="app-title">codeial</h1>
+    </a>
   </div>
   <ul id="header-list" class="horizontal-list">
     <% if(locals.user){ %>
     <li>
-      <a href="/users/profile"> <%= user.name %> </a>
+      <a href="/users/profile/<%= locals.user._id %>"> <%= user.name %> </a>
     </li>
     <li>
       <a href="/users/sign-out">Sign-out</a>

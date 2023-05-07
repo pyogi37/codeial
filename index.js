@@ -9,21 +9,17 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const passportJWT = require("./config/passport-jwt-strategy");
+const passportGoogle = require("./config/passport-google-oauth2-strategy");
 const MongoStore = require("connect-mongo");
-
-//node sass
-// const sass = require("sass");
-
-// app.use(
-//   sass({
-//     src: "/assets/scss",
-//     dest,
-//   })
-// );
+const flash = require("connect-flash");
+const customMware = require("./config/middleware");
 
 app.use(express.static("./assets"));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(expressLayouts);
 
@@ -63,6 +59,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 // use express router
 app.use("/", require("./routes"));

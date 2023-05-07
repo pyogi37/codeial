@@ -29,8 +29,7 @@ body {
   margin-left: 5px;
 }
 
-#body {
+#layout-main {
   height: 90vh;
-  width: 95vh;
-  margin-right: 5vh;
+  width: 90vw;
 }
