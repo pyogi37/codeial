@@ -1,0 +1,41 @@
+[33mcommit c415935e05dd565ad1d35c3328c8f3de85136d59[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Sun May 7 23:00:30 2023 +0530
+
+    Likes functionality implemented
+
+[33mcommit d99e4c5f2b9072408d7dcd9f209517286ca89cdc[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Sat Dec 31 00:33:17 2022 +0530
+
+    setup post feed and shown all posts on home page with author name
+
+[33mcommit 9afcfd96ee6a96ee7ed69cf000c81e446fbfbaab[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Fri Dec 30 00:08:22 2022 +0530
+
+    styled header and footer and created post schema
+
+[33mcommit 69f4b495f234e91ee5a08f81862e570cc3d9ca6e[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Wed Dec 28 00:45:58 2022 +0530
+
+    Created sign up part of authentication
+
+[33mcommit b6adfcf08c3022f7cabb73a6c82c0aa7b3f22e70[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Tue Dec 27 15:03:30 2022 +0530
+
+    setup static file access for layout and pages
+
+[33mcommit 74935c14b42d90d38391383ed10216b62967474e[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Mon Dec 26 23:59:08 2022 +0530
+
+    added few routes and controllers
+
+[33mcommit 9891d218f24fe8cbebcaa83f9007ecf753765fe5[m
+Author: pyogi37 <pyogi37@gmail.com>
+Date:   Sun Dec 25 02:36:01 2022 +0530
+
+    first commit: created directory structure and setup express server

@@ -1,9 +1,20 @@
 const User = require("../models/user");
+const Friendship = require("../models/friendship");
 const fs = require("fs");
 const path = require("path");
 
+// to render the profile page
 module.exports.profile = function (req, res) {
+
   User.findById(req.params.id, function (err, user) {
+    if (req.user._id !== req.params.id) {
+      let existingFriendship = User.findOne({
+        _id: req.user.id,
+        friendsips: { $in: [req.params.id] },
+      });
+
+     
+    }
     return res.render("user_profile", {
       title: "Profile",
       profile_user: user,
@@ -11,6 +22,7 @@ module.exports.profile = function (req, res) {
   });
 };
 
+// to update the profile
 module.exports.update = async function (req, res) {
   if (req.user.id == req.params.id) {
     try {
@@ -41,6 +53,7 @@ module.exports.update = async function (req, res) {
     return res.redirect("back");
   }
 };
+
 
 // render sign in page
 module.exports.signIn = function (req, res) {

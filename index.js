@@ -1,4 +1,6 @@
 const express = require("express");
+const env = require("./config/environment");
+const logger = require("morgan");
 const app = express();
 const port = 8000;
 const expressLayouts = require("express-ejs-layouts");
@@ -15,11 +17,18 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
 
-app.use(express.static("./assets"));
+// setup the chat server to be used with socket.io
+const chatServer = require("http").Server(app);
+const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("chat server is listening on port 5000");
+
+app.use(express.static(env.assest_path));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expressLayouts);
 
@@ -36,7 +45,7 @@ app.use(
   session({
     name: "codeial",
     // TODO change secret before deployment in production mode
-    secret: "blahblah",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -44,9 +53,7 @@ app.use(
     },
     store: MongoStore.create(
       {
-        mongoUrl:
-          // "mongodb+srv://pyogi37:9928890454@cluster0.az667sk.mongodb.net/test",
-          "mongodb://0.0.0.0:27017/codeial_development",
+        mongoUrl: "mongodb://0.0.0.0:27017/codeial_development",
         autoRemove: "disabled",
       },
       function (err) {

@@ -29,5 +29,36 @@
 <% }else{ %>
 <p><%= profile_user.name %></p>
 <p><%= profile_user.email %></p>
+<a
+  id="toggle-friendship-button"
+  href="/friendships/make/:<%=profile_user._id%>"
+>
+  Add friend
+</a>
 
 <% } %>
+
+<script>
+  const toggleButton = document.getElementById("toggle-friendship-button");
+  const href = toggleButton.getAttribute("href");
+
+  toggleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Make an AJAX request to toggle the friendship status
+    $.ajax({
+      url: href,
+      type: "POST",
+      success: function (data) {
+        // Do something with the response data
+        if (data.data.deleted == false) {
+          toggleButton.innerText = "Remove Friend";
+        } else {
+          toggleButton.innerHTML = "Add Friend";
+        }
+      },
+      error: function (error) {
+        console.error(error);
+      },
+    });
+  });
+</script>

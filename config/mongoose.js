@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
+const env = require("./environment");
 
-mongoose.connect("mongodb://0.0.0.0:27017/codeial_development");
+mongoose.connect(`mongodb://0.0.0.0:27017/${env.db}`);
 
 const db = mongoose.connection;
 

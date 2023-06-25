@@ -11,6 +11,7 @@ router.get(
   usersController.profile
 );
 
+
 router.post(
   "/update/:id",
   passport.checkAuthentication,

@@ -18,6 +18,21 @@ module.exports.home = async function (req, res) {
       .populate("likes");
 
     let users = await User.find({});
+    console.log("all posts*****************", posts);
+
+    // search friends of the logged in user
+    if (req.user) {
+      const friendIds = req.user.friendships;
+      User.find({ _id: { $in: friendIds } }, (err, friends) => {
+        // find the friends by their IDs
+        if (err) {
+          console.error(err); // handle any errors
+          return;
+        }
+
+        console.log("FRIENDS", friends); // do something with the friends array
+      });
+    }
 
     return res.render("home", {
       title: "Codeial | Home",
