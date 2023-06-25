@@ -1,0 +1,24 @@
+#page-header {
+  background-color: blueviolet;
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#app-title-container {
+  display: flex;
+}
+
+#app-title-container a {
+  text-decoration: none;
+}
+
+#app-title {
+  font-family: sans-serif;
+  color: aliceblue;
+  margin: 0%;
+  margin-left: 3px;
+  background-color: blueviolet;
+}
+

@@ -1,0 +1,7 @@
+#page-footer {
+  background-color: blueviolet;
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
