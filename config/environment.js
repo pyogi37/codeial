@@ -62,7 +62,7 @@ const production = {
 };
 
 module.exports = development;
-if (process.env.NODE_ENV === "production") {
+if (process.env.CODEIAL_ENVIRONMENT === "production") {
   module.exports = production;
 } else {
   module.exports = development;
