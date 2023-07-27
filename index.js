@@ -26,7 +26,7 @@ const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
 chatServer.listen(5000);
 console.log("chat server is listening on port 5000");
 
-app.use(express.static(env.assest_path));
+app.use(express.static(__dirname + env.assest_path));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
