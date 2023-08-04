@@ -1,0 +1,1 @@
+ssh -i "C:\Users\Priyanshu\Downloads\pyogi37@.pem" ubuntu@54.227.116.54      
