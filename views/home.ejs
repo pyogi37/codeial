@@ -38,7 +38,7 @@
 <script src="/js/home_post.js"></script>
 
 <!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
-<script src="js/toggle_likes.js"></script>
+<script src="<%= assetPath('js/toggle_likes.js')%>"></script>
 <script>
   $(".toggle-like-button").each(function () {
     let self = this;
@@ -53,7 +53,7 @@
   referrerpolicy="no-referrer"
 ></script>
 
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js')%>"></script>
 
 <% if(locals.user){ %>
 <script>
