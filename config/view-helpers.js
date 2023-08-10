@@ -5,7 +5,7 @@ const fs = require("fs");
 module.exports = (app) => {
   app.locals.assetPath = function (filepath) {
     if (env.name == "development") {
-      return filepath;
+      return "/" + filepath;
     }
 
     return (

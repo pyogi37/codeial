@@ -12,7 +12,7 @@ const accessLogStream = rfs.createStream("access.log", {
 
 const development = {
   name: "development",
-  assest_path: "./assets",
+  assest_path: "/assets",
   session_cookie_key: "blahblah",
   db: "codeial_development",
   smtp: {
